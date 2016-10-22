@@ -47,16 +47,15 @@ namespace AOBSigMaker
 
             }
 
-            //Make Mask
-            
-            string arrayAnospaces = arrayA.Text.Replace(" ", "");
-            string arrayBnospaces = arrayB.Text.Replace(" ", "");
+            //Make Mask with wildcards (Half-Byte)
+
+            string arrayAnospaces = arrayA.Text.Replace(" ", "");  //Remove Spaces from ArrayA
+            string arrayBnospaces = arrayB.Text.Replace(" ", "");  //Remove Spaces from ArrayB
+
             int ArrayLengthMask = arrayAnospaces.Length;
 
             for (int i = 0; i < ArrayLengthMask; i++)
             {
-
-
                 if (arrayAnospaces[i] != arrayBnospaces[i])
                 {
                     txtResultMask.Text = txtResultMask.Text + "?";
@@ -65,12 +64,11 @@ namespace AOBSigMaker
                 {
                     txtResultMask.Text = txtResultMask.Text + "x";
                 }
-
             }
 
 
 
-       //Make array with wildcards (Whole-Byte)
+            //Make Mask with wildcards (Whole-Byte)
             string FirstHalf ="";
             string SecondHalf = "";
 
@@ -78,8 +76,6 @@ namespace AOBSigMaker
             //Compare the first character of each byte
             for (int i = 0; i < ArrayLengthMask; i += 2)
             {
-
-
                 if (arrayAnospaces[i] != arrayBnospaces[i])
                 {
                     FirstHalf = FirstHalf + "?";
@@ -88,14 +84,11 @@ namespace AOBSigMaker
                 {
                     FirstHalf = FirstHalf + "x";
                 }
-
             }
 
             //Compare the second character of each byte
             for (int i = 1; i < ArrayLengthMask; i += 2)
             {
-
-
                 if (arrayAnospaces[i] != arrayBnospaces[i])
                 {
                     SecondHalf = SecondHalf + "?";
@@ -104,7 +97,6 @@ namespace AOBSigMaker
                 {
                     SecondHalf = SecondHalf + "x";
                 }
-
             }
 
             string ArrayAS = FirstHalf;
@@ -139,6 +131,7 @@ namespace AOBSigMaker
             txtStatus.Text = "OK!";
         }
 
+        //Copy Results
         private void btnCopyArrayA_Click(object sender, EventArgs e)
         {
             try
